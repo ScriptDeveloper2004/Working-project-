@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2, h3 {
+            color: #333;
+        }
+
+        #sections {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+
+        #sections a {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+        }
+
+        #user-section {
+            display: none;
+            text-align: center;
+        }
+
+        #options {
+            display: none;
+            margin-top: 10px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Welcome to My Website</h1>
+
+        <div id="sections">
+            <a href="#" onclick="showSection('FAQ')">FAQ</a>
+            <a href="#" onclick="showSection('About')">About</a>
+            <a href="register.html" onclick="showSection('Register/Login')">Register or Login</a>
+        </div>
+
+        <div id="user-section">
+            <!-- User section displayed after registration/login -->
+            <h3 id="username"></h3>
+            <button onclick="showOptions()">My Account</button>
+        </div>
+
+        <div id="options">
+            <!-- User options displayed when My Account is clicked -->
+            <button onclick="deleteAccount()">Delete Account</button>
+            <button onclick="signOut()">Sign Out</button>
+        </div>
+
+        <div id="FAQ" style="display:none;">
+            <!-- FAQ Section -->
+            <h2>FAQ</h2>
+            <!-- Add FAQ content here -->
+        </div>
+
+        <div id="About" style="display:none;">
+            <!-- About Section -->
+            <h2>About Us</h2>
+            <!-- Add About content here -->
+        </div>
+    </div>
+
+    <script>
+        function showSection(section) {
+            // Hide all sections
+            document.getElementById('FAQ').style.display = 'none';
+            document.getElementById('About').style.display = 'none';
+
+            // Show the selected section
+            document.getElementById(section).style.display = 'block';
+        }
+
+        function showOptions() {
+            // Display the options section when My Account is clicked
+            document.getElementById('options').style.display = 'block';
+        }
+
+        function deleteAccount() {
+            // Perform account deletion logic
+            // For simplicity, redirect to registration page after deletion
+            window.location.href = 'index.html';
+        }
+
+        function signOut() {
+            // Perform sign out logic
+            // For simplicity, redirect to registration page after sign out
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+
+</html>

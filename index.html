@@ -74,7 +74,7 @@
         <div id="sections">
             <a href="#" onclick="showSection('FAQ')">FAQ</a>
             <a href="#" onclick="showSection('About')">About</a>
-            <a href="register.html" onclick="showSection('Register/Login')">Register or Login</a>
+            <a href="#" onclick="showSection('RegisterLogin')">Register or Login</a>
         </div>
 
         <div id="user-section">
@@ -92,17 +92,23 @@
         <div id="FAQ" style="display:none;">
             <!-- FAQ Section -->
             <h2>FAQ</h2>
-            <!-- Add FAQ content here -->
+            <p>Placeholder content for FAQ section.</p>
         </div>
 
         <div id="About" style="display:none;">
             <!-- About Section -->
             <h2>About Us</h2>
-            <!-- Add About content here -->
+            <p>Placeholder content for About Us section.</p>
         </div>
     </div>
 
     <script>
+        // Check if there is a registered user in local storage
+        const storedUsername = localStorage.getItem('username');
+        if (storedUsername) {
+            setUserSection(storedUsername);
+        }
+
         function showSection(section) {
             // Hide all sections
             document.getElementById('FAQ').style.display = 'none';
@@ -110,6 +116,13 @@
 
             // Show the selected section
             document.getElementById(section).style.display = 'block';
+        }
+
+        function setUserSection(username) {
+            // Display the user section and hide the register/login section
+            document.getElementById('RegisterLogin').style.display = 'none';
+            document.getElementById('user-section').style.display = 'block';
+            document.getElementById('username').innerText = `Welcome, ${username}`;
         }
 
         function showOptions() {
@@ -120,12 +133,14 @@
         function deleteAccount() {
             // Perform account deletion logic
             // For simplicity, redirect to registration page after deletion
+            localStorage.removeItem('username');
             window.location.href = 'index.html';
         }
 
         function signOut() {
             // Perform sign out logic
             // For simplicity, redirect to registration page after sign out
+            localStorage.removeItem('username');
             window.location.href = 'index.html';
         }
     </script>
